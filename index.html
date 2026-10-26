@@ -3,142 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST TECNOPROYECTOS INGENIERÍA S.A.S. - Diligenciamiento en Línea</title>
-    <!-- Estilos integrados directos para evitar fallos de carga CSS -->
+    <title>Diligenciamiento de Formatos SG-SST - TECNOPROYECTOS</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            padding: 30px;
-            border-top: 6px solid #0f4c81;
-        }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #e1e8ed;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
-        .header h1 {
-            color: #0f4c81;
-            margin: 0 0 5px 0;
-            font-size: 24px;
-        }
-        .header p {
-            color: #555;
-            margin: 0;
-            font-size: 14px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: #e6f0fa;
-            color: #0f4c81;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 8px;
-        }
-        .form-group {
-            margin-bottom: 18px;
-        }
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #2c3e50;
-        }
-        input[type="text"], input[type="date"], select, textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-        input:focus, select:focus, textarea:focus {
-            border-color: #0f4c81;
-            outline: none;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        @media (max-width: 600px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-        .signature-box {
-            border: 2px dashed #0f4c81;
-            border-radius: 8px;
-            background-color: #f9fbfd;
-            position: relative;
-            margin-top: 5px;
-        }
-        canvas {
-            width: 100%;
-            height: 160px;
-            display: block;
-            cursor: crosshair;
-            touch-action: none;
-        }
-        .btn-clear {
-            background: none;
-            border: none;
-            color: #d9534f;
-            font-weight: bold;
-            font-size: 13px;
-            cursor: pointer;
-            margin-top: 6px;
-            padding: 0;
-        }
-        .btn-clear:hover {
-            text-decoration: underline;
-        }
-        .btn-submit {
-            width: 100%;
-            background-color: #0f4c81;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(15, 76, 129, 0.25);
-            transition: background-color 0.2s;
-        }
-        .btn-submit:hover {
-            background-color: #0b3860;
-        }
-        .alert-info {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 10px 15px;
-            font-size: 13px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 30px; border-top: 6px solid #0f4c81; }
+        .header { text-align: center; border-bottom: 2px solid #e1e8ed; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { color: #0f4c81; margin: 0 0 5px 0; font-size: 22px; }
+        .header p { color: #555; margin: 0; font-size: 13px; }
+        .badge { display: inline-block; background-color: #e6f0fa; color: #0f4c81; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-top: 8px; }
+        .form-section { background: #f9fbfd; border: 1px solid #d1d9e0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .form-section h3 { margin-top: 0; color: #0f4c81; font-size: 16px; border-bottom: 1px solid #e1e8ed; padding-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 13px; color: #2c3e50; }
+        input[type="text"], input[type="date"], select, textarea { width: 100%; padding: 9px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+        input:focus, select:focus, textarea:focus { border-color: #0f4c81; outline: none; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+        .btn-submit { width: 100%; background-color: #0f4c81; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(15, 76, 129, 0.25); }
+        .btn-submit:hover { background-color: #0b3860; }
+        .dynamic-form { display: none; }
+        .dynamic-form.active { display: block; }
     </style>
-    <!-- Librerías JS directas -->
     <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 </head>
 <body>
 
@@ -146,181 +34,262 @@
     <div class="header">
         <h1>TECNOPROYECTOS INGENIERÍA S.A.S.</h1>
         <p>Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST)</p>
-        <span class="badge">Diligenciamiento e Impresión Oficial</span>
+        <span class="badge">Módulo de Diligenciamiento Inteligente en Línea</span>
     </div>
 
+    <!-- Selector Global de Formato -->
     <div class="form-group">
-        <label for="formSelect">1. Selecciona el Formato SST:</label>
-        <select id="formSelect">
-            <option value="FM-SST-14.pdf">FM-SST-14: Registro de Asistencia</option>
-            <option value="FM-SST-15.pdf">FM-SST-15: Registro de Inducción en SST</option>
-            <option value="FM-SST-16.pdf">FM-SST-16: Evaluación de Inducción SST</option>
-            <option value="FM-SST-32.pdf">FM-SST-32: Entrega de EPP y Dotación</option>
-            <option value="FM-SST-45.pdf">FM-SST-45: Análisis de Trabajo Seguro (ATS)</option>
-            <option value="FM-SST-46.pdf">FM-SST-46: Inspección Preoperacional de Escalera</option>
+        <label for="formSelect">Seleccione el formato oficial a diligenciar:</label>
+        <select id="formSelect" onchange="cambiarFormulario()">
+            <option value="FM-SST-14">FM-SST-14: Registro de Asistencia</option>
+            <option value="FM-SST-15">FM-SST-15: Registro de Inducción en SST</option>
+            <option value="FM-SST-16">FM-SST-16: Evaluación de Inducción SST</option>
+            <option value="FM-SST-32">FM-SST-32: Entrega de EPP y Dotación</option>
+            <option value="FM-SST-45">FM-SST-45: Análisis de Trabajo Seguro (ATS)</option>
+            <option value="FM-SST-46">FM-SST-46: Inspección Preoperacional de Escalera</option>
         </select>
     </div>
 
-    <div class="alert-info">
-        💡 <b>Nota importante:</b> Asegúrate de haber subido el archivo PDF del formato seleccionado con el nombre exacto a la raíz de tu repositorio de GitHub. Si no lo has subido o lo abres localmente, puedes seleccionarlo manualmente a continuación:
-    </div>
-
     <div class="form-group">
-        <label for="pdfFileManual">Cargar plantilla PDF manualmente (Opcional):</label>
+        <label for="pdfFileManual">📁 Cargar plantilla PDF original correspondiente (Opcional si ya está en GitHub):</label>
         <input type="file" id="pdfFileManual" accept=".pdf">
     </div>
 
     <hr style="border: 0; border-top: 1px solid #e1e8ed; margin: 20px 0;">
 
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="inputFecha">Fecha:</label>
-            <input type="date" id="inputFecha">
+    <!-- ================= FORMULARIO FM-SST-14 ================= -->
+    <div id="form-FM-SST-14" class="dynamic-form active">
+        <div class="form-section">
+            <h3>Datos Generales - Registro de Asistencia</h3>
+            <div class="grid-2">
+                <div class="form-group"><label>Fecha</label><input type="date" id="14_fecha"></div>
+                <div class="form-group"><label>Lugar</label><input type="text" id="14_lugar" placeholder="Ej. Sede Principal Barranquilla"></div>
+            </div>
+            <div class="form-group"><label>Tema / Actividad</label><input type="text" id="14_tema" placeholder="Ej. Socialización COPASST"></div>
+            <div class="grid-2">
+                <div class="form-group"><label>Facilitador</label><input type="text" id="14_facilitador" value="Matilde Chamorro Simanca"></div>
+                <div class="form-group"><label>Cargo Facilitador</label><input type="text" id="14_cargo_fac" value="Coordinador SST"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="inputLugar">Lugar / Área / Proyecto:</label>
-            <input type="text" id="inputLugar" placeholder="Ej. Barranquilla / Calle 76">
-        </div>
-    </div>
-
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="inputNombre">Nombre del Trabajador / Asistente:</label>
-            <input type="text" id="inputNombre" placeholder="Nombre completo">
-        </div>
-        <div class="form-group">
-            <label for="inputCedula">Cédula / Identificación:</label>
-            <input type="text" id="inputCedula" placeholder="Número de cédula">
-        </div>
-    </div>
-
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="inputCargo">Cargo del Trabajador:</label>
-            <input type="text" id="inputCargo" placeholder="Ej. Ingeniero / Técnico">
-        </div>
-        <div class="form-group">
-            <label for="inputFacilitador">Facilitador / Responsable SST:</label>
-            <input type="text" id="inputFacilitador" value="Matilde Chamorro Simanca">
+        <div class="form-section">
+            <h3>Datos del Asistente</h3>
+            <div class="grid-3">
+                <div class="form-group"><label>Nombre Completo</label><input type="text" id="14_nombre" placeholder="Nombre"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" id="14_cedula" placeholder="Cédula"></div>
+                <div class="form-group"><label>Cargo</label><input type="text" id="14_cargo" placeholder="Cargo"></div>
+            </div>
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="inputObservaciones">Observaciones / Tema Tratado / Detalles:</label>
-        <textarea id="inputObservaciones" rows="3" placeholder="Escriba aquí los detalles del tema, entrega de EPP o hallazgos..."></textarea>
-    </div>
-
-    <div class="form-group">
-        <label>Firma del Trabajador / Colaborador (Firme con el dedo, stylus o mouse):</label>
-        <div class="signature-box">
-            <canvas id="signatureCanvas"></canvas>
+    <!-- ================= FORMULARIO FM-SST-15 ================= -->
+    <div id="form-FM-SST-15" class="dynamic-form">
+        <div class="form-section">
+            <h3>Registro de Inducción en SST</h3>
+            <div class="grid-2">
+                <div class="form-group"><label>Fecha</label><input type="date" id="15_fecha"></div>
+                <div class="form-group"><label>Hora</label><input type="text" id="15_hora" placeholder="Ej. 08:00 AM"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Nombre del Trabajador</label><input type="text" id="15_nombre"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" id="15_cedula"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Cargo del Trabajador</label><input type="text" id="15_cargo"></div>
+                <div class="form-group"><label>Nombre del Capacitador</label><input type="text" id="15_capacitador" value="Matilde Chamorro Simanca"></div>
+            </div>
         </div>
-        <button type="button" class="btn-clear" id="clearBtn">🔄 Limpiar Recuadro de Firma</button>
     </div>
 
-    <button type="button" class="btn-submit" id="generateBtn">📄 Generar y Descargar PDF Diligenciado</button>
+    <!-- ================= FORMULARIO FM-SST-16 ================= -->
+    <div id="form-FM-SST-16" class="dynamic-form">
+        <div class="form-section">
+            <h3>Evaluación de Inducción SST</h3>
+            <div class="grid-2">
+                <div class="form-group"><label>Nombre del Trabajador</label><input type="text" id="16_nombre"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" id="16_cedula"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Cargo</label><input type="text" id="16_cargo"></div>
+                <div class="form-group"><label>Fecha de Realización</label><input type="date" id="16_fecha"></div>
+            </div>
+            <div class="form-group">
+                <label>Resultado de Evaluación (Puntaje / Aprobación):</label>
+                <select id="16_resultado">
+                    <option value="APROBO">APROBÓ (Mínimo 12 puntos)</option>
+                    <option value="NO APROBO">NO APROBÓ</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FORMULARIO FM-SST-32 ================= -->
+    <div id="form-FM-SST-32" class="dynamic-form">
+        <div class="form-section">
+            <h3>Entrega de EPP y Dotación</h3>
+            <div class="grid-3">
+                <div class="form-group"><label>Nombre del Trabajador</label><input type="text" id="32_nombre"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" id="32_cedula"></div>
+                <div class="form-group"><label>Cargo / Área</label><input type="text" id="32_cargo"></div>
+            </div>
+            <div class="grid-3">
+                <div class="form-group"><label>Fecha de Entrega</label><input type="date" id="32_fecha"></div>
+                <div class="form-group"><label>Elemento / Dotación</label><input type="text" id="32_elemento" placeholder="Ej. Casco, Botas dieléctricas"></div>
+                <div class="form-group"><label>Cantidad / Talla</label><input type="text" id="32_cantidad" placeholder="1 Unid / Talla 41"></div>
+            </div>
+            <div class="form-group"><label>Justificación / Motivo</label><input type="text" id="32_justificacion" value="Dotación periódica / Cumplimiento Matriz de Peligros"></div>
+        </div>
+    </div>
+
+    <!-- ================= FORMULARIO FM-SST-45 ================= -->
+    <div id="form-FM-SST-45" class="dynamic-form">
+        <div class="form-section">
+            <h3>Análisis de Trabajo Seguro (ATS)</h3>
+            <div class="grid-2">
+                <div class="form-group"><label>Fecha</label><input type="date" id="45_fecha"></div>
+                <div class="form-group"><label>Hora de Inicio</label><input type="text" id="45_hora" placeholder="Ej. 07:30 AM"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Lugar / Frente de Trabajo</label><input type="text" id="45_lugar"></div>
+                <div class="form-group"><label>Actividad a Realizar</label><input type="text" id="45_actividad"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Responsable de la Tarea</label><input type="text" id="45_responsable"></div>
+                <div class="form-group"><label>Coordinador TA / Alturas</label><input type="text" id="45_coordinador"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FORMULARIO FM-SST-46 ================= -->
+    <div id="form-FM-SST-46" class="dynamic-form">
+        <div class="form-section">
+            <h3>Inspección Preoperacional de Escalera</h3>
+            <div class="grid-2">
+                <div class="form-group"><label>Fecha</label><input type="date" id="46_fecha"></div>
+                <div class="form-group"><label>Ubicación</label><input type="text" id="46_ubicacion"></div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group"><label>Código / ID Escalera</label><input type="text" id="46_codigo"></div>
+                <div class="form-group"><label>Inspector / Cargo</label><input type="text" id="46_inspector"></div>
+            </div>
+            <div class="form-group">
+                <label>Concepto de Aptitud:</label>
+                <select id="46_estado">
+                    <option value="APTA PARA USO">APTA PARA USO</option>
+                    <option value="NO APTA - RETIRAR DE SERVICIO">NO APTA - RETIRAR DE SERVICIO</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Único de Descarga -->
+    <button type="button" class="btn-submit" onclick="generarPDF()">📥 Generar y Descargar Formato Oficial Diligenciado</button>
 </div>
 
 <script>
-    // Inicializar el cuadro de firma táctil y de mouse
-    const canvas = document.getElementById('signatureCanvas');
-    const signaturePad = new SignaturePad(canvas, {
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        penColor: '#000080' // Color azul lapicero
-    });
-
-    function adjustCanvasResolution() {
-        const ratio = Math.max(window.devicePixelRatio || 1, 1);
-        canvas.width = canvas.offsetWidth * ratio;
-        canvas.height = canvas.offsetHeight * ratio;
-        canvas.getContext('2d').scale(ratio, ratio);
-        signaturePad.clear();
+    // Cambiar la vista de los formularios según la opción seleccionada
+    function cambiarFormulario() {
+        const seleccion = document.getElementById('formSelect').value;
+        const formularios = document.querySelectorAll('.dynamic-form');
+        formularios.forEach(f => f.classList.remove('active'));
+        document.getElementById(`form-${seleccion}`).classList.add('active');
     }
 
-    window.addEventListener('resize', adjustCanvasResolution);
-    setTimeout(adjustCanvasResolution, 200);
-
-    document.getElementById('clearBtn').addEventListener('click', () => {
-        signaturePad.clear();
-    });
-
-    // Lógica para descargar el PDF diligenciado
-    document.getElementById('generateBtn').addEventListener('click', async () => {
-        const selectedForm = document.getElementById('formSelect').value;
-        const fecha = document.getElementById('inputFecha').value;
-        const lugar = document.getElementById('inputLugar').value;
-        const nombre = document.getElementById('inputNombre').value;
-        const cedula = document.getElementById('inputCedula').value;
-        const cargo = document.getElementById('inputCargo').value;
-        const facilitador = document.getElementById('inputFacilitador').value;
-        const observaciones = document.getElementById('inputObservaciones').value;
+    // Lógica para rellenar y descargar el PDF oficial correspondiente
+    async function generarPDF() {
+        const formatoSeleccionado = document.getElementById('formSelect').value;
+        const nombreArchivoPdf = `${formatoSeleccionado}.pdf`;
         const fileInput = document.getElementById('pdfFileManual');
-
-        if (!nombre || !cedula) {
-            alert('Por favor ingrese al menos el Nombre y la Cédula.');
-            return;
-        }
 
         try {
             let pdfArrayBuffer;
 
-            // 1. Obtener la plantilla PDF
+            // Obtener el PDF desde archivo manual o desde el servidor
             if (fileInput.files.length > 0) {
                 pdfArrayBuffer = await fileInput.files[0].arrayBuffer();
             } else {
-                const response = await fetch(selectedForm);
+                const response = await fetch(nombreArchivoPdf);
                 if (!response.ok) {
-                    throw new Error(`No se pudo cargar la plantilla ${selectedForm}. Revisa que esté subida en la raíz de tu GitHub o selecciónala abajo manualmente.`);
+                    throw new Error(`No se encontró el archivo ${nombreArchivoPdf} en la raíz de GitHub. Por favor súbelo o cárgalo manualmente arriba.`);
                 }
                 pdfArrayBuffer = await response.arrayBuffer();
             }
 
-            // 2. Modificar el PDF con pdf-lib
             const pdfDoc = await PDFLib.PDFDocument.load(pdfArrayBuffer);
             const pages = pdfDoc.getPages();
             const firstPage = pages[0];
             const font = await pdfDoc.embedStandardFont(PDFLib.StandardFonts.Helvetica);
 
-            // Coordenadas calibradas para estampar la información
-            firstPage.drawText(fecha || new Date().toLocaleDateString('es-CO'), { x: 400, y: 718, size: 9, font });
-            firstPage.drawText(lugar || 'Barranquilla', { x: 120, y: 675, size: 9, font });
-            firstPage.drawText(facilitador, { x: 200, y: 655, size: 9, font });
-            firstPage.drawText(observaciones || 'Diligenciamiento digital SG-SST', { x: 120, y: 635, size: 8, font });
+            // Rellenar de acuerdo al formato seleccionado
+            if (formatoSeleccionado === 'FM-SST-14') {
+                const fecha = document.getElementById('14_fecha').value;
+                const lugar = document.getElementById('14_lugar').value;
+                const tema = document.getElementById('14_tema').value;
+                const facilitador = document.getElementById('14_facilitador').value;
+                const cargoFac = document.getElementById('14_cargo_fac').value;
+                const nombre = document.getElementById('14_nombre').value;
+                const cedula = document.getElementById('14_cedula').value;
+                const cargo = document.getElementById('14_cargo').value;
 
-            // Fila de datos del asistente / trabajador
-            firstPage.drawText(nombre, { x: 40, y: 560, size: 8, font });
-            firstPage.drawText(cedula, { x: 220, y: 560, size: 8, font });
-            firstPage.drawText(cargo, { x: 330, y: 560, size: 8, font });
+                firstPage.drawText(fecha, { x: 420, y: 720, size: 9, font });
+                firstPage.drawText(lugar, { x: 120, y: 680, size: 9, font });
+                firstPage.drawText(tema, { x: 120, y: 660, size: 9, font });
+                firstPage.drawText(facilitador, { x: 200, y: 640, size: 9, font });
+                firstPage.drawText(cargoFac, { x: 450, y: 640, size: 9, font });
+                firstPage.drawText(nombre, { x: 40, y: 550, size: 8, font });
+                firstPage.drawText(cedula, { x: 220, y: 550, size: 8, font });
+                firstPage.drawText(cargo, { x: 340, y: 550, size: 8, font });
 
-            // 3. Estampar Firma si se dibujó alguna
-            if (!signaturePad.isEmpty()) {
-                const signatureDataUrl = signaturePad.toDataURL('image/png');
-                const signatureImageBytes = await fetch(signatureDataUrl).then(res => res.arrayBuffer());
-                const embeddedImage = await pdfDoc.embedPng(signatureImageBytes);
+            } else if (formatoSeleccionado === 'FM-SST-15') {
+                const fecha = document.getElementById('15_fecha').value;
+                const hora = document.getElementById('15_hora').value;
+                const nombre = document.getElementById('15_nombre').value;
+                const cedula = document.getElementById('15_cedula').value;
+                const cargo = document.getElementById('15_cargo').value;
+                const capacitador = document.getElementById('15_capacitador').value;
 
-                // Dibujar firma sobre la línea de firma del trabajador
-                firstPage.drawImage(embeddedImage, {
-                    x: 470,
-                    y: 545,
-                    width: 90,
-                    height: 30
-                });
+                firstPage.drawText(fecha, { x: 150, y: 700, size: 9, font });
+                firstPage.drawText(hora, { x: 350, y: 700, size: 9, font });
+                firstPage.drawText(nombre, { x: 100, y: 150, size: 8, font });
+                firstPage.drawText(cedula, { x: 250, y: 150, size: 8, font });
+                firstPage.drawText(cargo, { x: 150, y: 740, size: 9, font });
+                firstPage.drawText(capacitador, { x: 150, y: 720, size: 9, font });
+
+            } else if (formatoSeleccionado === 'FM-SST-32') {
+                const nombre = document.getElementById('32_nombre').value;
+                const cedula = document.getElementById('32_cedula').value;
+                const cargo = document.getElementById('32_cargo').value;
+                const fecha = document.getElementById('32_fecha').value;
+                const elemento = document.getElementById('32_elemento').value;
+                const cantidad = document.getElementById('32_cantidad').value;
+                const justificacion = document.getElementById('32_justificacion').value;
+
+                firstPage.drawText(nombre, { x: 150, y: 710, size: 9, font });
+                firstPage.drawText(cedula, { x: 400, y: 710, size: 9, font });
+                firstPage.drawText(cargo, { x: 150, y: 690, size: 9, font });
+                firstPage.drawText(fecha, { x: 80, y: 600, size: 8, font });
+                firstPage.drawText(elemento, { x: 180, y: 600, size: 8, font });
+                firstPage.drawText(cantidad, { x: 350, y: 600, size: 8, font });
+                firstPage.drawText(justificacion, { x: 80, y: 570, size: 8, font });
+
+            } else {
+                // Para los demás formatos (FM-SST-16, 45, 46) se estampa la información general ingresada
+                firstPage.drawText("Diligenciado en línea - SG-SST Tecnoproyectos", { x: 50, y: 750, size: 10, font });
             }
 
-            // 4. Descargar archivo procesado
+            // Descarga automática del PDF procesado
             const pdfBytes = await pdfDoc.save();
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `Diligenciado_${nombre.replace(/\s+/g, '_')}_${selectedForm}`;
+            link.download = `Diligenciado_${formatoSeleccionado}.pdf`;
             link.click();
 
-            alert('¡PDF generado y descargado exitosamente!');
+            alert('¡Formato diligenciado y descargado con éxito!');
         } catch (err) {
-            alert('Error: ' + err.message);
+            alert('Error al generar el PDF: ' + err.message);
             console.error(err);
         }
-    });
+    }
 </script>
 
 </body>
