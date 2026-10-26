@@ -3,148 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SST Tecnoproyectos - Diligenciamiento en Línea</title>
-    <!-- Tailwind CSS para un diseño profesional -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Librerías para manipular PDFs y Firmas -->
+    <title>SST TECNOPROYECTOS INGENIERÍA S.A.S. - Diligenciamiento en Línea</title>
+    <!-- Estilos integrados directos para evitar fallos de carga CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+            border-top: 6px solid #0f4c81;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #e1e8ed;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #0f4c81;
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+        .header p {
+            color: #555;
+            margin: 0;
+            font-size: 14px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #e6f0fa;
+            color: #0f4c81;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+        input[type="text"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #0f4c81;
+            outline: none;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .signature-box {
+            border: 2px dashed #0f4c81;
+            border-radius: 8px;
+            background-color: #f9fbfd;
+            position: relative;
+            margin-top: 5px;
+        }
+        canvas {
+            width: 100%;
+            height: 160px;
+            display: block;
+            cursor: crosshair;
+            touch-action: none;
+        }
+        .btn-clear {
+            background: none;
+            border: none;
+            color: #d9534f;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 6px;
+            padding: 0;
+        }
+        .btn-clear:hover {
+            text-decoration: underline;
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: #0f4c81;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(15, 76, 129, 0.25);
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #0b3860;
+        }
+        .alert-info {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+    </style>
+    <!-- Librerías JS directas -->
     <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen py-10 px-4">
-    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8">
-        <!-- Encabezado -->
-        <div class="border-b pb-4 mb-6 text-center">
-            <h1 class="text-2xl font-bold text-blue-900">TECNOPROYECTOS INGENIERÍA S.A.S.</h1>
-            <p class="text-sm text-gray-600">Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST)</p>
-            <span class="inline-block mt-2 bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Diligenciamiento Inteligente de Formatos</span>
-        </div>
+<body>
 
-        <!-- Selector de Formato -->
-        <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Selecciona el Formato a Diligenciar:</label>
-            <select id="formSelect" class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-blue-500">
-                <option value="FM-SST-14.pdf">FM-SST-14: Registro de Asistencia</option>
-                <option value="FM-SST-15.pdf">FM-SST-15: Registro de Inducción en SST</option>
-                <option value="FM-SST-16.pdf">FM-SST-16: Evaluación de Inducción SST</option>
-                <option value="FM-SST-32.pdf">FM-SST-32: Entrega de EPP y Dotación</option>
-                <option value="FM-SST-45.pdf">FM-SST-45: Análisis de Trabajo Seguro (ATS)</option>
-                <option value="FM-SST-46.pdf">FM-SST-46: Inspección Preoperacional de Escalera</option>
-            </select>
-        </div>
-
-        <!-- Campos de Datos Básicos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha del Registro</label>
-                <input type="date" id="inputFecha" class="w-full border border-gray-300 rounded-lg p-2.5">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Trabajador / Asistente</label>
-                <input type="text" id="inputNombre" placeholder="Ej. Juan Pérez" class="w-full border border-gray-300 rounded-lg p-2.5">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Cédula / Identificación</label>
-                <input type="text" id="inputCedula" placeholder="Ej. 72123456" class="w-full border border-gray-300 rounded-lg p-2.5">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Cargo u Oficio</label>
-                <input type="text" id="inputCargo" placeholder="Ej. Técnico Electricista" class="w-full border border-gray-300 rounded-lg p-2.5">
-            </div>
-        </div>
-
-        <!-- Cuadro de Firma Digital / Táctil -->
-        <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-1">Firma del Trabajador (Firme con el mouse o el dedo)</label>
-            <div class="border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 p-2 relative">
-                <canvas id="signatureCanvas" class="w-full h-40 cursor-crosshair touch-none bg-white rounded"></canvas>
-            </div>
-            <button type="button" id="clearBtn" class="mt-2 text-sm text-red-600 hover:text-red-800 font-medium">🔄 Limpiar Firma</button>
-        </div>
-
-        <!-- Botón de Acción -->
-        <button id="generateBtn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition duration-200 text-center">
-            📥 Generar y Descargar PDF Oficial Diligenciado
-        </button>
+<div class="container">
+    <div class="header">
+        <h1>TECNOPROYECTOS INGENIERÍA S.A.S.</h1>
+        <p>Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST)</p>
+        <span class="badge">Diligenciamiento e Impresión Oficial</span>
     </div>
 
-    <!-- Script de Lógica -->
-    <script>
-        // Configurar la libreta de firmas
-        const canvas = document.getElementById('signatureCanvas');
-        const signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgb(255, 255, 255)' });
+    <div class="form-group">
+        <label for="formSelect">1. Selecciona el Formato SST:</label>
+        <select id="formSelect">
+            <option value="FM-SST-14.pdf">FM-SST-14: Registro de Asistencia</option>
+            <option value="FM-SST-15.pdf">FM-SST-15: Registro de Inducción en SST</option>
+            <option value="FM-SST-16.pdf">FM-SST-16: Evaluación de Inducción SST</option>
+            <option value="FM-SST-32.pdf">FM-SST-32: Entrega de EPP y Dotación</option>
+            <option value="FM-SST-45.pdf">FM-SST-45: Análisis de Trabajo Seguro (ATS)</option>
+            <option value="FM-SST-46.pdf">FM-SST-46: Inspección Preoperacional de Escalera</option>
+        </select>
+    </div>
 
-        function resizeCanvas() {
-            const ratio = Math.max(window.devicePixelRatio || 1, 1);
-            canvas.width = canvas.offsetWidth * ratio;
-            canvas.height = canvas.offsetHeight * ratio;
-            canvas.getContext('2d').scale(ratio, ratio);
-            signaturePad.clear();
+    <div class="alert-info">
+        💡 <b>Nota importante:</b> Asegúrate de haber subido el archivo PDF del formato seleccionado con el nombre exacto a la raíz de tu repositorio de GitHub. Si no lo has subido o lo abres localmente, puedes seleccionarlo manualmente a continuación:
+    </div>
+
+    <div class="form-group">
+        <label for="pdfFileManual">Cargar plantilla PDF manualmente (Opcional):</label>
+        <input type="file" id="pdfFileManual" accept=".pdf">
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #e1e8ed; margin: 20px 0;">
+
+    <div class="grid-2">
+        <div class="form-group">
+            <label for="inputFecha">Fecha:</label>
+            <input type="date" id="inputFecha">
+        </div>
+        <div class="form-group">
+            <label for="inputLugar">Lugar / Área / Proyecto:</label>
+            <input type="text" id="inputLugar" placeholder="Ej. Barranquilla / Calle 76">
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="form-group">
+            <label for="inputNombre">Nombre del Trabajador / Asistente:</label>
+            <input type="text" id="inputNombre" placeholder="Nombre completo">
+        </div>
+        <div class="form-group">
+            <label for="inputCedula">Cédula / Identificación:</label>
+            <input type="text" id="inputCedula" placeholder="Número de cédula">
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="form-group">
+            <label for="inputCargo">Cargo del Trabajador:</label>
+            <input type="text" id="inputCargo" placeholder="Ej. Ingeniero / Técnico">
+        </div>
+        <div class="form-group">
+            <label for="inputFacilitador">Facilitador / Responsable SST:</label>
+            <input type="text" id="inputFacilitador" value="Matilde Chamorro Simanca">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputObservaciones">Observaciones / Tema Tratado / Detalles:</label>
+        <textarea id="inputObservaciones" rows="3" placeholder="Escriba aquí los detalles del tema, entrega de EPP o hallazgos..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Firma del Trabajador / Colaborador (Firme con el dedo, stylus o mouse):</label>
+        <div class="signature-box">
+            <canvas id="signatureCanvas"></canvas>
+        </div>
+        <button type="button" class="btn-clear" id="clearBtn">🔄 Limpiar Recuadro de Firma</button>
+    </div>
+
+    <button type="button" class="btn-submit" id="generateBtn">📄 Generar y Descargar PDF Diligenciado</button>
+</div>
+
+<script>
+    // Inicializar el cuadro de firma táctil y de mouse
+    const canvas = document.getElementById('signatureCanvas');
+    const signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgba(255, 255, 255, 0)',
+        penColor: '#000080' // Color azul lapicero
+    });
+
+    function adjustCanvasResolution() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext('2d').scale(ratio, ratio);
+        signaturePad.clear();
+    }
+
+    window.addEventListener('resize', adjustCanvasResolution);
+    setTimeout(adjustCanvasResolution, 200);
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+        signaturePad.clear();
+    });
+
+    // Lógica para descargar el PDF diligenciado
+    document.getElementById('generateBtn').addEventListener('click', async () => {
+        const selectedForm = document.getElementById('formSelect').value;
+        const fecha = document.getElementById('inputFecha').value;
+        const lugar = document.getElementById('inputLugar').value;
+        const nombre = document.getElementById('inputNombre').value;
+        const cedula = document.getElementById('inputCedula').value;
+        const cargo = document.getElementById('inputCargo').value;
+        const facilitador = document.getElementById('inputFacilitador').value;
+        const observaciones = document.getElementById('inputObservaciones').value;
+        const fileInput = document.getElementById('pdfFileManual');
+
+        if (!nombre || !cedula) {
+            alert('Por favor ingrese al menos el Nombre y la Cédula.');
+            return;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
-        document.getElementById('clearBtn').addEventListener('click', () => {
-            signaturePad.clear();
-        });
+        try {
+            let pdfArrayBuffer;
 
-        // Lógica para rellenar y descargar el PDF
-        document.getElementById('generateBtn').addEventListener('click', async () => {
-            const selectedForm = document.getElementById('formSelect').value;
-            const fecha = document.getElementById('inputFecha').value;
-            const nombre = document.getElementById('inputNombre').value;
-            const cedula = document.getElementById('inputCedula').value;
-            const cargo = document.getElementById('inputCargo').value;
-
-            if (!nombre || !cedula) {
-                alert('Por favor completa al menos el nombre y la cédula.');
-                return;
-            }
-
-            try {
-                // Cargar el PDF original desde el repositorio de GitHub
-                const pdfUrl = selectedForm; // Como está en la misma carpeta raíz
-                const existingPdfBytes = await fetch(pdfUrl).then(res => {
-                    if (!res.ok) throw new Error("No se pudo cargar el archivo PDF original.");
-                    return res.arrayBuffer();
-                });
-
-                const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-                const pages = pdfDoc.getPages();
-                const firstPage = pages[0];
-                const font = await pdfDoc.embedStandardFont(PDFLib.StandardFonts.Helvetica);
-
-                // Dibujar los textos ingresados en coordenadas clave de la primera página
-                firstPage.drawText(`Fecha: ${fecha}`, { x: 50, y: 700, size: 10, font });
-                firstPage.drawText(`Nombre: ${nombre}`, { x: 50, y: 680, size: 10, font });
-                firstPage.drawText(`Cédula: ${cedula}`, { x: 50, y: 660, size: 10, font });
-                firstPage.drawText(`Cargo: ${cargo}`, { x: 50, y: 640, size: 10, font });
-
-                // Si hay firma, estamparla en el PDF
-                if (!signaturePad.isEmpty()) {
-                    const signatureImageBytes = await fetch(signaturePad.toDataURL()).then(res => res.arrayBuffer());
-                    const signatureImage = await pdfDoc.embedPng(signatureImageBytes);
-                    firstPage.drawImage(signatureImage, {
-                        x: 50,
-                        y: 550,
-                        width: 150,
-                        height: 50,
-                    });
+            // 1. Obtener la plantilla PDF
+            if (fileInput.files.length > 0) {
+                pdfArrayBuffer = await fileInput.files[0].arrayBuffer();
+            } else {
+                const response = await fetch(selectedForm);
+                if (!response.ok) {
+                    throw new Error(`No se pudo cargar la plantilla ${selectedForm}. Revisa que esté subida en la raíz de tu GitHub o selecciónala abajo manualmente.`);
                 }
-
-                // Guardar y descargar el archivo resultante
-                const pdfBytes = await pdfDoc.save();
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = `Diligenciado_${selectedForm}`;
-                link.click();
-
-                alert('¡Documento generado y descargado con éxito!');
-            } catch (error) {
-                alert('Hubo un error al generar el PDF. Asegúrate de que los nombres de los archivos PDF subidos coincidan exactamente con las opciones (ej. FM-SST-14.pdf).');
-                console.error(error);
+                pdfArrayBuffer = await response.arrayBuffer();
             }
-        });
-    </script>
+
+            // 2. Modificar el PDF con pdf-lib
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfArrayBuffer);
+            const pages = pdfDoc.getPages();
+            const firstPage = pages[0];
+            const font = await pdfDoc.embedStandardFont(PDFLib.StandardFonts.Helvetica);
+
+            // Coordenadas calibradas para estampar la información
+            firstPage.drawText(fecha || new Date().toLocaleDateString('es-CO'), { x: 400, y: 718, size: 9, font });
+            firstPage.drawText(lugar || 'Barranquilla', { x: 120, y: 675, size: 9, font });
+            firstPage.drawText(facilitador, { x: 200, y: 655, size: 9, font });
+            firstPage.drawText(observaciones || 'Diligenciamiento digital SG-SST', { x: 120, y: 635, size: 8, font });
+
+            // Fila de datos del asistente / trabajador
+            firstPage.drawText(nombre, { x: 40, y: 560, size: 8, font });
+            firstPage.drawText(cedula, { x: 220, y: 560, size: 8, font });
+            firstPage.drawText(cargo, { x: 330, y: 560, size: 8, font });
+
+            // 3. Estampar Firma si se dibujó alguna
+            if (!signaturePad.isEmpty()) {
+                const signatureDataUrl = signaturePad.toDataURL('image/png');
+                const signatureImageBytes = await fetch(signatureDataUrl).then(res => res.arrayBuffer());
+                const embeddedImage = await pdfDoc.embedPng(signatureImageBytes);
+
+                // Dibujar firma sobre la línea de firma del trabajador
+                firstPage.drawImage(embeddedImage, {
+                    x: 470,
+                    y: 545,
+                    width: 90,
+                    height: 30
+                });
+            }
+
+            // 4. Descargar archivo procesado
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `Diligenciado_${nombre.replace(/\s+/g, '_')}_${selectedForm}`;
+            link.click();
+
+            alert('¡PDF generado y descargado exitosamente!');
+        } catch (err) {
+            alert('Error: ' + err.message);
+            console.error(err);
+        }
+    });
+</script>
+
 </body>
 </html>
